@@ -1,0 +1,17 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World!</title>
+</head>
+
+<body>
+  <div><textarea name="textField" id="textField" cols="30" rows="10"></textarea></div>
+  <script>
+    const {ipcRenderer} = require('electron')
+    ipcRenderer.on('textRequest', () => {
+      let data = document.getElementById('textField').value
+      ipcRenderer.send('text', data)
+    })
+  </script>
+</body>
+</html>
